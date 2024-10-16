@@ -1,10 +1,10 @@
 ---
 title: "Replicate Experiment"
 format: 
-  html:
+  html: 
     toc: true
     toc-depth: 3
-  
+   
     
 execute:
   echo: false
@@ -19,11 +19,11 @@ execute:
 
 Statistical process control (SPC) is the use of statistical methods to monitor and control the quality of processes. Though the tools were initially developed and used for manufacturing, they have found applications in many other areas where outcomes can be measured and quality is valued, including scientific laboratories. Some of the most common SPC tools include Run Charts, Control Charts, Experimental Design, and Replicate Experiment.
 
-The Replicate-Experiment is based on Bland-Altman difference analysis^[1](https://www-users.york.ac.uk/~mb55/meas/ba.pdf)^ between two sets of measurements and is used to assess either **repeatability** or **reproducibility**. These terms have specific meanings in SPC. **Repeatability** is the ability to produce comparable results within a group of conditions (e.g. people, intstruments, reagents, ...), while **reproducibility** refers to the ability to replicate results across different conditions (e.g. between two assayers or pieces of equipment). Initially repeatability should be demonstrated by having a scientist test the same set of samples with 2 independently prepared sets of working reagents/cells (note: these experiments can be performed at the same time or on different days) on the same set of equipment. Once repeatability has been established, reproducibility can be determined between different assayers, pieces of equipment, or lots of reagents or cells.
+The Replicate-Experiment^1a Eastwood 2006^ is based on Bland-Altman difference analysis^[1](https://www-users.york.ac.uk/~mb55/meas/ba.pdf)^ between two sets of measurements and is used to assess either **repeatability** or **reproducibility**. These terms have specific meanings in SPC. **Repeatability** is the ability to produce comparable results within a group of conditions (e.g. people, intstruments, reagents, ...), while **reproducibility** refers to the ability to replicate results across different conditions (e.g. between two assayers or pieces of equipment). Initially repeatability should be demonstrated by having a scientist test the same set of samples with 2 independently prepared sets of working reagents/cells (note: these experiments can be performed at the same time or on different days) on the same set of equipment. Once repeatability has been established, reproducibility can be determined between different assayers, pieces of equipment, or lots of reagents or cells.
 
 ## Rationale
 
-Replicate-Experiment studies^2^ are used to formally evaluate the *within-run* assay variability and formally compare the new assay to the existing (old) assay. They also allow a preliminary assessment of the *overall* or *between-run* assay variability, but two runs are not enough to adequately assess overall variability. Post-Production monitoring, such as Retrospective MSR^[3](https://www.ncbi.nlm.nih.gov/books/NBK169432/)^ analysis and Control Charts are used to formally evaluate the overall variability in the assay. Note that the Replicate-Experiment study is a diagnostic and decision tool used to establish that the assay is ready to go into production by showing that the endpoints of the assay are reproducible over a range of values. It is not intended as a substitute for post-production monitoring or to provide an estimate of the overall Minimum Significant Ratio (MSR).
+Replicate-Experiment studies^2^ are used to formally evaluate the *within-run* assay variability and formally compare a new assay to the existing (old) assay. They also allow a preliminary assessment of the *overall* or *between-run* assay variability, but two runs are not enough to adequately assess overall variability. Post-Production monitoring, such as Retrospective MSR^[3](https://www.ncbi.nlm.nih.gov/books/NBK169432/)^ analysis and Control Charts are used to formally evaluate the overall variability in the assay. Note that the Replicate-Experiment study is a diagnostic and decision tool used to establish that the assay is ready to go into production by showing that the endpoints of the assay are repeatable over a range of values. It is not intended as a substitute for post-production monitoring or to provide an estimate of the overall Minimum Significant Ratio (MSR).
 
 It may seem counter-intuitive to call the differences between two independent assay runs as *within-run* variability. However, the terminology results from how assay runs are defined. Experimental variation is categorized into two distinct components: *between-run* and *within-run* sources. Consider the following examples:
 
@@ -43,23 +43,31 @@ In a Replicate-Experiment study the *between-run* sources of variation cause one
 
 The Replicate-Experiment is intended to be easy to execute with a modest resource commitment. Most executions can be performed with 2-4 assay plates. It is most commonly run in the potency mode, though it can be run in efficacy mode to gain a better understanding of assay variability across the dynamic range of the assay or facilitate the interpretation of screening results.
 
-The potency mode is ideally run with 20-30 active compounds with a broad range of potencies and the potencies should be well spaced across the range of potencies. If this number of active compounds is not available, then it can be run with a small set of compounds in replicate, with each replicate treated as an independent sample (e.g. 5 compounds with 5 replicate dilutions).
+The potency mode is ideally run with 20-30 active compounds with a broad range of potencies and the potencies should be well spaced across the range of potencies. If this number of active compounds is not available, then it can be run with a smaller set of compounds in replicate, with each replicate treated as an independent sample (e.g. 5 compounds with 5 seperate replicate dilutions).
 
 In the efficacy mode, it is particularly important to have samples where the activity spans the dynamic range of the assay. Often the variability of measurements will not be constant across the dynamic range of the assay. For this reason, efficacy studies should not be conducted with random screening plates, since most compounds will be inactive and could skew the assessment. It may be simpler to use a small number of active compounds in a. dilution series, as if for a potency determination, but treat each dilution as an independent sample for the efficacy analysis. This will ensure that the data cover the entire dynamic range of the assay with just a few compounds.
 
-Initially **repeatability** should be demonstrated with identical compounds tested with 2 independently prepared sets of reagents/cells. Once **repeatability** has been demonstrated for a protocol, **reproducibility** can be measured by comparing the same compounds run in the new and the old assay formats. **Reproducibility** can be used to validate minor assay changes such as new assayers, equipment substitutions, or changes to lots of reagents or cells.
+Initially **repeatability** should be demonstrated with identical compounds tested with 2 independently prepared sets of reagents/cells. Once **repeatability** has been demonstrated for a protocol, it is ready for routine testing. The assay should be monitored to ensure it behaves as validated. This can include any or all of the following methods:
+
+-   Control charting^Control Charts Ref.^ reference compound(s)
+
+-   Retrospective MSR studies^reference^
+
+-   periodic retests if the samples used in previous replicate experiments to compare to previous data.
+
+The replicate experiment is also used to validate minor assay changes such as new assayers, equipment substitutions, or changes to lots of reagents or cells. In this case the data from identical samples is compared in the current and new formats. Historical data can be used for the current format, as long as it comes from a single experiment.
 
 ## Data Analysis {#sec-data_analysis}
 
 The statistical analysis assumes that any measurement errors are normally distributed. While this is true for efficacy data, potency data is log-normal. This means that potency data must first be transformed to their log~10~ values before the analysis. After that transformation the analysis methods are the same:
 
-1.  For each pair of measurements calculate the mean = (meas1 + meas2)/2 and the difference = (meas1 - meas2). *Note when these values are transformed back to the linear scale for potency data they will generate the geometric mean and the ratio, since log(meas1) - log(meas2) = log(meas1/meas2).*
+1.  For each pair of compound measurements, calculate the mean = (meas1 + meas2)/2 and the difference = (meas1 - meas2). *Note when these values are transformed back to the linear scale for potency data they will generate the geometric mean and the ratio, since log(meas1) - log(meas2) = log(meas1/meas2).*
 
 2.  Calculate the mean ($\bar{d}$) and standard deviation (sd) for the set of the difference values.
 
-3.  Calculate the difference limits $DLs = \bar{d}\pm2sd/\sqrt{n}$ Where n is the number of compounds tested. This is the 95% confidence interval for the difference.
+3.  Calculate the difference limits $DLs = \bar{d}\pm2sd/\sqrt{n}$ Where n is the number of compounds tested. This is the 95% confidence interval for the mean difference.
 
-4.  Calculate limits of aggrement $LSAs = \bar{d}\pm3sd$ Most of the compound differences (\~99%) should fall within these limits.
+4.  Calculate limits of aggrement $LSAs = \bar{d}\pm2sd$ Most of the compound differences (\~95%) should fall within these limits.
 
 5.  Samples outside the aggrement limits are flagged as outliers.
 
@@ -71,15 +79,15 @@ If the variation between measurements of different samples is consistent and nor
 
 ![Difference Distribution for Replicate Experiment.](Figs/DiffPlot.png){#fig-diffstats}
 
-Figure 1. illustrates that distribution of difference values along with the associated analysis statistics. The difference limits are derived from the standard error of the mean (SEM) and represent a 95% CI around the mean differencei. If the difference limits include 0, then there is no strong systematic bias between the first and second measurement. The limits of statistical agreement (LSA) are the mean $\pm$ 2 standard deviations (95% CI) (green area) . While the MSD is equal to 2 standard deviations, so two measurements (either of the same sample or between 2 different samples) which differ by more than the MSD are considered to be statistically different. Finally those samples whose differences are more than 2 standard deviations from the mean (p \< 0.05) are flagged as potential outliers. If samples are flagged, then they may be excluded from the data set and the analysis repeated. **Note: As the number of samples increases, a few samples may fall outside the LSA due to random variation, especially if they are just outside of the LSA. If outliers are to be excluded, start with the most extreme differences.**
+Figure 1. illustrates that distribution of difference values along with the associated analysis statistics. The difference limits are derived from the standard error of the mean (SEM) and represent a 95% CI around the mean difference. If the difference limits include 0, then there is no discernable systematic bias between the first and second measurement. The limits of statistical agreement (LSA) are the mean $\pm$ 2 standard deviations (95% CI) (green area) . While the MSD is equal to 2 standard deviations, so two measurements (either of the same sample or between 2 different samples) which differ by more than the MSD are considered to be statistically different. Finally those samples whose differences are more than 2 standard deviations from the mean (p \< 0.05) are flagged as potential outliers. If samples are flagged, then they may be excluded from the data set and the analysis repeated. **Note: As the number of samples increases, a few samples may fall outside the LSA due to random variation, especially if they are just outside of the LSA. If outliers are to be excluded, start with the most extreme differences. Only obvious outliers or those with an assignable cause should be removed.**
 
-Fortunately all of this analysis can be done with the [Replicate-Experiment web tool](https://appshare.cancer.gov/agm/). Just create a .csv file of your data in any spreadsheet program and upload it to the tool for analysis.
+Fortunately all of this analysis can be done with the [Replicate-Experiment web tool](https://agm.ncats.nih.gov/app/ "https://agm.ncats.nih.gov/app/"). Just create a .csv file of your data in any spreadsheet program and upload it to the tool for analysis.
 
 ## Efficacy
 
 Efficacy measurements can be made with raw data from a detector or data which has been normalized (e.g. % Activity) using plate controls. Normalized data is preferred, since it provides biological context and facilitates comparisons across the lifetime of an assay. ***Note all the example data sets are % activity, where the vehicle control is set to 0.***
 
-A replicate-experiment can be used to determine the minimum difference in measured activities for 2 measurements to be statistically different ( $p \leq 0.05$). This is known as the **Minimum Significant Difference (MSD)**. The following scenario illustrates how MSD can be determined using just 2 384-well assay plates. Each plate contains the same 320 samples with activities that cover the full dynamic range of the assay and 64 control wells for the normalization. The plates are tested with independently prepared reagents/cells.
+A replicate-experiment can be used to determine the minimum difference in measured activities for 2 samples to be statistically different ( $p \leq 0.05$). This is known as the **Minimum Significant Difference (MSD)**. The following scenario illustrates how MSD can be determined using just 2 384-well assay plates. Each plate contains the same 320 samples with activities that cover the full dynamic range of the assay and 64 control wells for the normalization. The plates are tested with independently prepared reagents/cells.
 
 Here are the data from the first 6 samples. The data is simply the sample identifiers (numeric or character) and the measured activity values for the 2 experiments. This is all that is needed to upload for analysis.
 
@@ -118,7 +126,7 @@ knitr::kable(head(MSD20CalcData), 'pipe')
 
 The primary output of the analysis is the Mean Difference plot. The mean value of each data pair is plotted on the x-axis while the difference between the points is represented on the y-axis. Plotting the mean on the x-axis and difference on the y-axis provides an overview of the variability in the data across the activity range of the assay. This plot is similar to a residuals plot. If the data were identical and the variability was simply random, then the data points should be centered around 0 with about half of the data on either side of the center. The statistics in the plot are based on the distribution in @fig-diffstats.
 
-The blue lines show the mean difference (solid) and the difference limits (dashed) as well as a black reference line at 0. The 0 reference line is the expected difference, if the variability is random. The difference limits represent a 95% CI around the mean difference. If this includes 0, then the variability in the data is random with no significant systematic bias between the two runs. If the reference line does not fall within the difference limits, this suggests a difference between the runs due to a cause (e.g. reagents, equipment, samples, environment, ...).
+The blue lines show the mean difference (solid) and the difference limits (dashed) as well as a black reference line at 0. The 0 reference line is the expected difference, if the variability is random. The difference limits represent a 95% CI around the mean difference. If this includes 0, then the variability in the data is random with no discernable systematic bias between the two runs. If the reference line does not fall within the difference limits, this suggests a difference between the runs due to a cause (e.g. reagents, equipment, samples, environment, ...).
 
 The plot also includes agreement limits (95% CI) around the mean difference. The distance between the agreement limits is 2 standard deviations from the mean. This is also the minimum significant difference (MSD). Any two efficacy measurements, both within and between samples, are considered to be significantly different if the difference is greater than the MSD. These statistics are derived from the difference values as described in @sec-data_analysis.
 
@@ -132,11 +140,11 @@ MSD20Stats <- read_csv('Webtool Output/MSD20_JRW/MSD20Data320_EFF_Stats_tbl.csv'
 knitr::kable(MSD20Stats, 'pipe')
 ```
 
-@fig-diffhist shows distribution of the difference values. This is not part of the replicate experiment report, but may help to illustrate the analysis. Samples with differences outside of the agreement limits (95% CI) are flagged and labelled in the report graphs. A few random outliers may appear in any data set, especially in larger data sets that may be associated with efficacy data. The user may identify a cause for the difference and either remove the data from the file or set the value in the "toExclude" column to TRUE and then resubmit the data for analysis. If the "toExclude" value is TRUE, the data will not be used to calculate the statistics, but will appear in the graphs.
+@fig-diffhist shows the distribution of the difference values. This is not part of the replicate experiment report, but may help to illustrate the analysis. Samples with differences outside of the agreement limits (95% CI) are flagged and labelled in the report graphs. A few random outliers may appear in any data set, especially in larger data sets that may be associated with efficacy data. The user may identify a cause for the difference and either remove the data from the file or set the value in the "toExclude" column to TRUE and then resubmit the data for analysis. If the "toExclude" value is TRUE, the data will not be used to calculate the statistics, but will appear in the graphs.
 
 ![Efficacy Correlation plot.](Webtool%20Output/MSD20_JRW/MSD29Corr.png){#fig-effcorrplot}
 
-@fig-effcorrplot is a correlation plot of the two data sets with a unity reference line and the concordance correlation. The data should overlay the equality reference line.
+@fig-effcorrplot is a correlation plot of the two data sets with a unity reference line and Spearman's correlation coefficient. The data should overlay the equality reference line.
 
 The calculated data, plots, and statistics can be downloaded for documentation and future reference.
 
@@ -193,7 +201,7 @@ $$
 
 Potency data are the concentration of a substance which elicits a specified efficacy. These are generated from concentration response curves. AC~50~ values are used for the examples, but any potency measurement (K~i~, LD~80~, etc.) can be used.
 
-A replicate-experiment can be used to determine the minimum difference in measured potency for 2 samples to be statistically different ( $p \leq 0.05$). This is known as the **Minimum Significant Ratio (MSR)**. Ideally at least 20 compounds are tested in two experiments. The experiments may be run on different days or in parallel, as long as the reagents/cells are preparede independently. The dose curves for the recommended 20-30 compounds can still be accommodated with 1-2 384-well plates/run. Ideally these compounds should have potency values which span the range of interest for the assay. The potency data are generally expressed in molar concentrations (e.g uM, nM, pM), though other units (eg. dilution factors, wt/volume) can be used, as long as the potency values are fit from a standard Hill equation (Y vs log(X).
+A replicate-experiment can be used to determine the minimum ratio in measured potency for 2 samples to be statistically different ( $p \leq 0.05$). This is known as the **Minimum Significant Ratio (MSR)**. Ideally at least 20 compounds are tested in two experiments. The experiments may be run on different days or in parallel, as long as the reagents/cells are preparede independently. The dose curves for the recommended 20-30 compounds can still be accommodated with 1-2 384-well plates/run. Ideally these compounds should have potency values which span the range of interest for the assay. The potency data are generally expressed in molar concentrations (e.g uM, nM, pM), though other units (eg. dilution factors, wt/volume) can be used, as long as the potency values are fit from a standard Hill equation (Y vs log(X).
 
 ### Log-normal Distribution {#sec-lognorm}
 
@@ -201,9 +209,9 @@ Potency values generally follow a log-normal distribution.^6^ In other words, lo
 
 ![Log-normal Distribution](Figs/LogNormFig.png){#fig-lognorm}
 
-A simulated data set of 10,000 potency measurements of compound with a potency of 100 nM was used to illustrate some of the properties of log-normal data. \@fig-lognorm shows several views of the data distribution. Panel A represents the original data values plotted on a linear axis. Panel B is the log~10~ transformed potency data and exhibits the expected normal distribution centered on 2 (log~10~(100) = 2). Panel C is. the original data plotted with log~10~ transformed axis which now appears to be normally distributed. Transforming the axis spacing for log-normal data facilitates visualiation of the variability in the data. The true potency of 100 is the geometric mean of the data set and would represent the median in the distribution of the original data. Note that the peak of the original data is less than the geometric mean, since the data is right skewed. Similarly this skew will result in arithmetic means do not represent the midpoint of the distribution.
+A simulated data set of 10,000 potency measurements of compound with a potency of 100 nM was used to illustrate some of the properties of log-normal data. @fig-lognorm shows several views of the data distribution. Panel A represents the original data values plotted on a linear axis. Panel B is the log~10~ transformed potency data and exhibits the expected normal distribution centered on 2 (log~10~(100) = 2). Panel C is. the original data plotted with log~10~ transformed axis which now appears to be normally distributed. Transforming the axis spacing for log-normal data facilitates visualiation of the variability in the data. The true potency of 100 is the geometric mean of the data set and would represent the median in the distribution of the original data. Note that the peak of the original data is less than the geometric mean, since the data is right skewed. Similarly this skew will result in arithmetic means do not represent the midpoint of the distribution.
 
-This log-normal data distribution means that the data analysis must be performed on log(Potency) data as described in @sec-data_analysis. The differences and associated statistics are shown in @fig-diffhist. These are then converted back to the linear scale for reporting, so differences are transformed to ratios and a difference of 0 becomes a ratio of 1. These transformed values are also log-normal and are the axis scales are transformed for graphing.
+This log-normal data distribution means that the data analysis must be performed on log(Potency) data as described in @sec-data_analysis. The differences and associated statistics are shown in @fig-diffhist. These are then converted back to the linear scale for reporting, so differences are transformed to ratios and a difference of 0 becomes a ratio of 1. These transformed values are also log-normal and the axis scales are transformed for graphing.
 
 ### Example
 
@@ -239,7 +247,7 @@ The primary output of the analysis is the Mean Ratio plot. The geometric mean va
 
 The blue lines show the mean ratio (solid) and the ratio limits (dashed) as well as a reference line at 1. The reference line is the expected ratio, if the variability is random. The ratio limits represent a 95% CI around the mean ratio. If this includes 1, then the variability in the data is random with no significant systematic bias between the two runs. If the reference line does not fall within the ratio limits, this suggests a difference between the runs due to a cause (e.g. reagents, equipment, samples, environment, ...).
 
-The plot also includes agreement limits (95% CI) around the mean ratio. The distance between the agreement limits is 2 standard deviations from the mean. This is also the minimum significant ratio (MSR). Any two efficacy measurements, both within and between samples, are considered to be significantly different if the ratio is greater than the MSR. These statistics are derived from the log(Potency) difference values as described in @sec-data_analysis.
+The plot also includes agreement limits around the mean ratio. Any two potency measurements, both within and between samples, are considered to be significantly different if the ratio of the larger value to the smaller value is greater than the MSR. These statistics are derived from the log(Potency) difference values as described in @sec-data_analysis.
 
 ```{r potMSR3stats, echo=FALSE}
 
@@ -251,7 +259,7 @@ knitr::kable(MSR3Stats, 'pipe')
 
 ![Potency Correlation plot.](Webtool%20Output/MSR3/MSR3Corr.png){#fig-potCorr}
 
-@fig-potCorr is a correlation plot of the two data sets with a unity reference line and the concordance correlation. The data should overlay the equality reference line.
+@fig-potCorr is a correlation plot of the two data sets with a unity reference line and the Spearman correlation. The data should overlay the equality reference line.
 
 The calculated data, plots, and statistics can be downloaded for documentation and future reference.
 
@@ -271,7 +279,7 @@ knitr::kable(MSRfewStats, 'pipe')
 
 ![Correlation Plot](Webtool%20Output/FewSmplRep_POT_19774/FewSmplCorr.png){#fig-fewCorr}
 
-Fortunately there is a simple solution to this problem. Each sample can be replicated multiple times on the plates and the replicate dose response curves analyzed as if they were from different samples. In this example, the 5 unique samples were each replicated 6 times (e.g. sample 1 becomes 1A, 1B, 1C ...). This produces 30 pairs of potency values for the analysis
+Fortunately there is a simple solution to this problem. Each sample can be replicated multiple times on the plates and the replicate dose response curves analyzed as if they were from different samples. Ideally, these replicate samples should be prepared as if they were unique compounds with their own dilution series. In this example, the 5 unique samples were each replicated 6 times (e.g. sample 1 becomes 1A, 1B, 1C ...). This produces 30 pairs of potency values for the analysis
 
 ![Replicated samples Mean Ratio plot,](Webtool%20Output/FewSmplRep_POT_19774/FewSmplRep.MR.png)
 
@@ -287,9 +295,9 @@ knitr::kable(MSRRepSmplStats, 'pipe')
 
 While it is easy to identify the clusters due to the sample replication in the graphs, the improvement in statistical power from n=30 instead of n = 5 provides a much better estimate of the true assay variability. Both the MSR and the ratio limits are significantly lower.
 
-### Systematic Difference between Runs
+### Systematic Difference between Runs (change example to larger difference)
 
-When the mean ratio line is displaced from the ratio = 1 reference line, this may be an indication of a systematic difference between the two experiments. However if the reference line is within the ratio limits, this could simply be random variation, or due to a cause with a very small effect. However, if the reference line is outside of the ratio limits, this can indicate a systematic difference which should be investigated. This systematic error will inflate the MSR in the analysis.
+When the mean ratio line is displaced from the ratio = 1 reference line, this may be an indication of a systematic difference between the two experiments. However if the reference line is within the ratio limits, this could simply be random variation, or due to a cause with a very small effect. If the reference line is outside of the ratio limits, this can indicate a systematic difference which should be investigated.
 
 ![Systematic error Mean Ratio plot.](Webtool%20Output/MSR3data32shift_POT_19774/MSR3ShiftMR.png){#fig-seMD}
 

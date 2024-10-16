@@ -36,3 +36,5 @@ rsconnect/
 # html files
 RepExpDoc.html
 RepExpDoc_files/
+# other output formats
+Output_Versions/
