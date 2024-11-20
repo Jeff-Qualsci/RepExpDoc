@@ -104,3 +104,7 @@ MSD20Data320 <- msd_data(SmplNum = 320, TstMSD = 20, Shift = 0)
 
 MSR3CalcData <- read_csv('Webtool Output/MSR3/MSR3data32_POT_OutputData_tbl.csv')
 
+
+# MSD1536 data
+MSD15_1536Data <- msd_data(SmplNum = 1536, TstMSD = 15)
+write_csv(MSD15_1536Data, file = 'Data/MSD15_1536data.csv')
