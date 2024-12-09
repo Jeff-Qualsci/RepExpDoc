@@ -11,6 +11,14 @@ cathist.plot <- function(x, Type) {
     theme_linedraw()
 }
 
+# Set the figure directory for the generated figures
+fig_dir = 'www'
+
+# If the directory does not exist, then create directory
+if (!dir.exists(fig_dir)){
+  dir.create(fig_dir)
+} 
+
 # Replicate Experiment Difference Statistics Plot --------------
 diffPlot <- ggplot(data.frame(x = c(-4, 4)), aes(x)) +
   stat_function(fun = dnorm,
@@ -48,11 +56,9 @@ diffPlot <- ggplot(data.frame(x = c(-4, 4)), aes(x)) +
   scale_y_continuous(breaks = NULL) +
   theme_linedraw()
   
-ggsave(filename = 'Figs/DiffPlot.png', plot = diffPlot, height = 3, width = 5, units = 'in')
-
+ggsave(filename = file.path(fig_dir, 'DiffPlot.png'), plot = diffPlot, height = 3, width = 5, units = 'in')
 
 # Efficacy Difference Histogram -------------------
-
 # effStats <- read_csv('Webtool Output/MSD20_JRW/MSD20Data320_EFF_Stats_tbl.csv')
 # 
 # effCalcData <- read_csv('Webtool Output/MSD20_JRW/MSD20Data320_EFF_OutputData_tbl.csv')%>% 
@@ -63,7 +69,7 @@ ggsave(filename = 'Figs/DiffPlot.png', plot = diffPlot, height = 3, width = 5, u
 # 
 # effDiffHist <- cathist.plot(x = effCalcData$Difference, Type = effCalcData$Type)
 # 
-# ggsave(filename = 'Figs/MSD20DiffHist', plot = effDiffHist, width = 4, height = 3, units = 'in')
+# ggsave(filename = file.path(fig_dir, 'MSD20DiffHist.png'), plot = effDiffHist, width = 4, height = 3, units = 'in')
 
 
 # Log Normal example ------------------------------
@@ -103,5 +109,4 @@ transNormPlot <- logNormPlot +
 
 logNormFig <- logNormPlot / logPotPlot / transNormPlot + plot_annotation(tag_levels = 'A')
 
-ggsave(filename = 'Figs/LogNormFig.png', plot = logNormFig, height = 6, width = 4, units = 'in')
-
+ggsave(filename = file.path(fig_dir, 'LogNormFig.png'), plot = logNormFig, height = 6, width = 4, units = 'in')
