@@ -54,7 +54,7 @@ In a Replicate-Experiment study the *between-run* sources of variation cause one
 
 The Replicate-Experiment is intended to be easy to execute with a modest resource commitment. Most executions can be performed with 2-4 assay plates. It is most commonly run in the potency mode, though it can be run in efficacy mode to gain a better understanding of assay variability across the dynamic range of the assay or facilitate the interpretation of screening results.
 
-The potency mode is ideally run with 20-30 active compounds with a broad range of potencies and the potencies should be well spaced across the range of potencies. If this number of active compounds is not available, then it can be run with a smaller set of compounds in replicate, with each replicate treated as an independent sample (e.g. 5 compounds with 5 seperate replicate dilutions).
+The potency mode is ideally run with 20-30 active compounds with a broad range of potencies and the potencies should be well spaced across the range of potencies. If this number of active compounds is not available, then it can be run with a smaller set of compounds in replicate, with each replicate treated as an independent sample (e.g. 5 compounds with 5 separate replicate dilutions).
 
 In the efficacy mode, it is particularly important to have samples where the activity spans the dynamic range of the assay. Often the variability of measurements will not be constant across the dynamic range of the assay. For this reason, efficacy studies should not be conducted with random screening plates, since most compounds will be inactive and could skew the assessment. It may be simpler to use a small number of active compounds in a. dilution series, as if for a potency determination, but treat each dilution as an independent sample for the efficacy analysis. This will ensure that the data cover the entire dynamic range of the assay with just a few compounds.
 
@@ -78,9 +78,9 @@ The statistical analysis assumes that any measurement errors are normally distri
 
 3.  Calculate the difference limits $DLs = \bar{d}\pm2sd/\sqrt{n}$ Where n is the number of compounds tested. This is the 95% confidence interval for the mean difference.
 
-4.  Calculate limits of aggrement $LSAs = \bar{d}\pm2sd$ Most of the compound differences (\~95%) should fall within these limits.
+4.  Calculate limits of agreement $LSAs = \bar{d}\pm2sd$ Most of the compound differences (\~95%) should fall within these limits.
 
-5.  Samples outside the aggrement limits are flagged as outliers.
+5.  Samples outside the agreement limits are flagged as outliers.
 
 6.  Calculate the Minimum Significant Difference $MSD = 2sd$ This is the minimum difference between two compounds that is statistically significant.
 
@@ -136,7 +136,7 @@ ggplot(data.frame(x = c(-4, 4)), aes(x)) +
 
 ```
 
-@fig-diffdist illustrates that distribution of difference values along with the associated analysis statistics. The difference limits are derived from the standard error of the mean (SEM) and represent a 95% CI around the mean difference. If the difference limits include 0, then there is no discernable systematic bias between the first and second measurement. The limits of statistical agreement (LSA) are the mean $\pm$ 2 standard deviations (95% CI) (green area). If a measurement difference is within 2 standard deviations of 0, then it is not significantly different from 0 and the measurements are considered to agree. **Note: As the number of samples increases, a few samples may fall outside the LSA due to random variation, especially if they are just outside of the LSA. If outliers are to be excluded, start with the most extreme differences. Only obvious outliers or those with an assignable cause should be removed.**
+@fig-diffdist illustrates that distribution of difference values along with the associated analysis statistics. The difference limits are derived from the standard error of the mean (SEM) and represent a 95% CI around the mean difference. If the difference limits include 0, then there is no discernible systematic bias between the first and second measurement. The limits of statistical agreement (LSA) are the mean $\pm$ 2 standard deviations (95% CI) (green area). If a measurement difference is within 2 standard deviations of 0, then it is not significantly different from 0 and the measurements are considered to agree. **Note: As the number of samples increases, a few samples may fall outside the LSA due to random variation, especially if they are just outside of the LSA. If outliers are to be excluded, start with the most extreme differences. Only obvious outliers or those with an assignable cause should be removed.**
 
 ### Variability of Data Sets
 
@@ -144,7 +144,7 @@ The two most common types of data reported from *in vitro* bioassays are efficac
 
 #### Efficacy
 
-**Efficacy** measures the magnitude of an **effect** at a given concentration and is usually what is directly measured in an assay well. The variability is efficacy measurements is normally distributed at given concentartion, though this variability may change across the dynamic range of the assay. There are two primary factors that can contribute to this. The first is the detection method. For example fluorescence intensity often exhibity a constant coefficient of variation (cv) across the dynamic range, the variability of ratiometric fluorescence polarization measurements is more constant. Second the sigmoidal nature of most dose response curves means that the variability of individual efficacy measurements will be greatest around the inflection point in the curve, due to the effect that small differences in sample concentration can exhibit. While it is difficult to predict the overall effect in advance, the replicate experiment with samples across the full dynamic range of the assay should indicate whether the data can be treated as a single population or should be divided into more discrete populations (e.g. inactive, moderatly active, highly active).
+**Efficacy** measures the magnitude of an **effect** at a given concentration and is usually what is directly measured in an assay well. The variability is efficacy measurements is normally distributed at given concentration, though this variability may change across the dynamic range of the assay. There are two primary factors that can contribute to this. The first is the detection method. For example fluorescence intensity often exhibit a constant coefficient of variation (cv) across the dynamic range, the variability of ratiometric fluorescence polarization measurements is more constant. Second the sigmoidal nature of most dose response curves means that the variability of individual efficacy measurements will be greatest around the inflection point in the curve, due to the effect that small differences in sample concentration can exhibit. While it is difficult to predict the overall effect in advance, the replicate experiment with samples across the full dynamic range of the assay should indicate whether the data can be treated as a single population or should be divided into more discrete populations (e.g. inactive, moderately active, highly active).
 
 #### Potency Data {#sec-potency-data}
 
