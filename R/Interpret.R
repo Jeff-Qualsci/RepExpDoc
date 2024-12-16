@@ -1,4 +1,4 @@
-source('R/fun_msx.R')
+source(file.path("R", 'fun_msx.R'))
 set.seed(10302024) #For reproducible example. 
 
 mdData <- msd_data(SmplNum = 100, TstMSD = 20, Shift = 2) %>% 
@@ -60,7 +60,7 @@ library(patchwork)
 
 logNormFig <- mdConceptPlot / mdPlot + plot_annotation(tag_levels = 'A')
 
-corrPlot ggplot(mdData,aes(x = Exp1, y = Exp2)) +
+corrPlot <-  ggplot(mdData,aes(x = Exp1, y = Exp2)) +
   geom_point() +
   geom_smooth(method = "lm", se = TRUE, linetype = "dashed", linewidth = 2) +
   geom_abline(slope = 1, intercept = 0) +
